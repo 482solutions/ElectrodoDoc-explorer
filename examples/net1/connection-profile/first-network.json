@@ -1,0 +1,62 @@
+{
+	"name": "first-network",
+	"version": "1.0.0",
+	"client": {
+		"tlsEnable": false,
+		"adminUser": "admin",
+		"adminPassword": "password",
+		"enableAuthentication": false,
+		"organization": "482solutions",
+		"connection": {
+			"timeout": {
+				"peer": {
+					"endorser": "300"
+				},
+				"orderer": "300"
+			}
+		}
+	},
+	"channels": {
+		"testchannel": {
+			"peers": {
+				"peer1": {}
+			},
+			"connection": {
+				"timeout": {
+					"peer": {
+						"endorser": "6000",
+						"eventHub": "6000",
+						"eventReg": "6000"
+					}
+				}
+			}
+		}
+	},
+	"organizations": {
+		"482solutions": {
+			"mspid": "482solutions",
+			"adminPrivateKey": {
+				"path": "/tmp/crypto/27937145a81a0c6cd5c6b9ee0b4ca3079952ca19642a6ba7bd91af37260cea0f_sk"
+			},
+			"peers": [
+				"peer1"
+			],
+			"signedCert": {
+				"path": "/tmp/crypto/cert.pem"
+			}
+		}
+	},
+	"peers": {
+		"peer1": {
+			"tlsCACerts": {
+				"path": "/tmp/crypto/172-28-0-3-7054.pem"
+			},
+			"url": "grpc://172.28.0.4:7051",
+			"eventUrl": "grpcs://172.28.0.4:7052",
+			"grpcOptions": {
+				"ssl-target-name-override": "peer1",
+				"request-timeout": 120001
+			}
+		}
+	}
+}
