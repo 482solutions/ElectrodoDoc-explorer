@@ -88,11 +88,14 @@ const dbroutes = (router, platform) => {
 					if (row) {
 						row.createdt = new Date(row.createdt).toISOString();
 						logger.debug(row);
-						if (row.write_set[0].set && row.write_set[0].set.length > 0) {
-							for (let i = 0; i < row.write_set[0].set.length; i++) {
-								row.write_set[0].set[i].value = JSON.parse(Buffer.from(row.write_set[0].set[i].value.data).toString())
+						for (let j = 0; j < row.write_set.length; j ++){
+							if (row.write_set[j].set && row.write_set[j].set.length > 0) {
+								for (let i = 0; i < row.write_set[j].set.length; i++) {
+									row.write_set[j].set[i].value = JSON.parse(Buffer.from(row.write_set[j].set[i].value.data).toString())
+								}
 							}
 						}
+						logger.debug(row);
 						return res.send({ status: 200, row });
 					}
 				});
