@@ -91,9 +91,9 @@ const dbroutes = (router, platform) => {
 						for (let j = 0; j < row.write_set.length; j ++){
 							if (row.write_set[j].set && row.write_set[j].set.length > 0) {
 								for (let i = 0; i < row.write_set[j].set.length; i++) {
-										if (row.write_set[j].set[i].value.data && row.write_set[j].set[i].value.data.lenght > 2){
+// 										if (row.write_set[j].set[i].value.data && row.write_set[j].set[i].value.data.lenght > 2){
 									row.write_set[j].set[i].value = JSON.parse(Buffer.from(row.write_set[j].set[i].value.data).toString())
-								 }
+// 								 }
 								}
 							}
 						}
